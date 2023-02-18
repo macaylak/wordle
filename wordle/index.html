@@ -4,9 +4,79 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Wordle</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="./wordle.js"></script>
+    <div class="game-container"></div>
+      <header>
+        <h1>Wordle</h1>
+        <nav>
+        <div id="menu">
+          <ul>
+          <li><span id="dark-mode" onclick="toggleDarkMode()">&#9681;</span></li>
+          <li><span id="hint" onclick="toggleHint()">&#63;</span></li>
+          <li><span id="instructions" onclick="toggleInstructions()">&#9432;</span></li>
+        </ul>
+        </div>
+      </nav>
+      </header>
+      <main>
+        <div class="container">
+          <div id="word-container">
+            <div id="row-1">
+            <table>
+              <tr>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+              </tr>
+            </table>
+            </div>
+            <div id="row-2">
+            <table>
+              <tr>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+              </tr>
+            </table>
+            </div>
+            <div id="row-3">
+            <table>
+              <tr>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+              </tr>
+            </table>
+            </div>
+            <div id="row-4">
+            <table>
+              <tr>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+                <td class="letter-box"></td>
+              </tr>
+            </table>
+            </div>
+          </div>
+          <div id="image-container">
+            <img src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif" alt="Congratulations!" />
+          </div>
+          <div id="start-over-container">
+            <button id="start-over-button">Start Over</button></div>
+          </main>
+          <div id="hint-box" class="hidden"></div>
+        </div>
+      <footer>
+        <p>© Macayla's Wordle</p>
+      </footer>
+     </div> 
+    <script src="wordle.js"></script>
+    
   </body>
 </html>

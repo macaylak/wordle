@@ -177,19 +177,30 @@ function updateWord(guess) {
     let end = start + 4;
 
     let allGreen = true; // assume all boxes are green
+    let allFilled = true; // assume all boxes are filled
 
     for (let i = start; i < end; i++) {
       let currentWordIndex = i % 4;
 
+      if (!guess[i]) {
+        allFilled = false;
+        break;
+      }
+
       if (guess[i] === currentWord.word[currentWordIndex]) {
-        boxes[currentWordIndex].style.backgroundColor = 'green';
+        boxes[currentWordIndex].style.backgroundColor = 'lightgreen';
       } else if (currentWord.word.includes(guess[i])) {
-        boxes[currentWordIndex].style.backgroundColor = 'yellow';
+        boxes[currentWordIndex].style.backgroundColor = '#FDFD96';
         allGreen = false; // not all boxes are green
       } else {
         boxes[currentWordIndex].style.backgroundColor = 'grey';
         allGreen = false; // not all boxes are green
       }
+    }
+
+    if (!allFilled) {
+      alert('Please complete the word before submitting a guess!');
+      return;
     }
 
     if (allGreen) {
@@ -200,7 +211,7 @@ function updateWord(guess) {
       
       // update the hint and start over button
       let hint = document.getElementById('hint-box');
-      hint.innerText = "Congratulations! You guessed the word!";
+      hint.innerHTML = "Woohoo! You guessed the word <b>" + currentWord.word + "</b> correctly!";
       let startOverButton = document.getElementById('start-over-button');
       startOverButton.addEventListener('click', () => {
         location.reload(); // reload the page
@@ -208,7 +219,7 @@ function updateWord(guess) {
     } else if (row === 4) {
       // If all rows have been filled and the word has not been guessed, show a "you lost" message
       let hint = document.getElementById('hint-box');
-      hint.innerText = "You lost";
+      hint.innerHTML = "You missed the word <b>" + currentWord.word + "</b> and lost!";
       hint.style.backgroundColor = 'red';
       hintBox.style.display = 'block';
       
@@ -219,6 +230,9 @@ function updateWord(guess) {
     }
   }
 }
+
+
+
 
 
 

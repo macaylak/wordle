@@ -1,6 +1,6 @@
 // define constants
-const API_URL = "https://api.masoudkf.com/v1/wordle";
-const API_KEY = "sw0Tr2othT1AyTQtNDUE06LqMckbTiKWaVYhuirv";
+const API_URL = 'https://s5rznqdan5.execute-api.us-east-1.amazonaws.com/dev/wordlist';
+
 const MAX_ATTEMPTS = 6;
 
 // define variables
@@ -32,11 +32,7 @@ if (cachedDictionary) {
   pickRandomWord();
 } else {
   console.log("Fetching dictionary from API...");
-  fetch(API_URL, {
-    headers: {
-      "x-api-key": API_KEY,
-    },
-  })
+  fetch(API_URL)
     .then((response) => response.json())
     .then((data) => {
       dictionary = data.dictionary;
@@ -47,6 +43,7 @@ if (cachedDictionary) {
     })
     .catch((error) => console.error(error));
 }
+
 
 // pick random word from dictionary
 function pickRandomWord() {
